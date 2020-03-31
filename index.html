@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 120px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            background: linear-gradient(90deg,#0162c8,#55e7fc);
+            position: relative;
+            overflow: hidden;
+        }
+        span{
+            position:absolute;
+            transform: translate(-50%,-50%);
+            background-color: rgba(255, 255,255, 1);
+            border-radius: 50%;
+            animation: dh 1s ease infinite; 
+        }
+        @keyframes dh {
+            0%{
+                width: 0;
+                height: 0;
+                opacity: 0.5;
+            }
+            100%{
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+        <button>
+            button
+        </button>
+ 
+</body>
+<script>
+    const btn = document.querySelector('button');
+    console.log(btn)
+    btn.addEventListener('click',function(e){
+        let x = e.clientX-e.target.offsetLeft
+        let y = e.clientY-e.target.offsetTop
+        let span = document.createElement('span')
+        span.style.left = x+'px';
+        span.style.top = y+'px';
+        this.appendChild(span)
+        setTimeout(function(){
+            span.remove()
+        },1000)
+    })
+</script>
+</html>
